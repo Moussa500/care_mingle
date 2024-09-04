@@ -52,6 +52,7 @@ class BabySitterModel extends UserModel {
     return {
       'name': name,
       'email': email,
+      'password':password,
       'phone': phone,
       'address': address,
       "role": role,
@@ -94,6 +95,7 @@ class ParentModel extends UserModel {
   Map<String, dynamic> toJson() {
     return {
       'name': name,
+      'password':password,
       'email': email,
       'phone': phone,
       'address': address,

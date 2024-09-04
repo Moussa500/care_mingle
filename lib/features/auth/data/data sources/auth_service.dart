@@ -12,20 +12,26 @@ abstract class AuthService {
 
 class AuthServiceImlp extends AuthService {
   ApiHelper apiHelper = ApiHelper();
-  @override
-  Future<Either> login(SignInReq signInReq) async{
-    return await apiHelper.post(url: baseUrl+loginEndPoint, data: signInReq.toJson());
-  }
 
   @override
   Future<Either> registerBabySitter(BabySitterModel babySitterModel) async {
-    return await apiHelper.post(
-        url: baseUrl + registerEndPoint, data: babySitterModel.toJson());
+    return await apiHelper.postFormData(
+        url: baseUrl + registerEndPoint,
+        data: babySitterModel.toJson(),
+        headers: headers);
   }
 
   @override
   Future<Either> registerParent(ParentModel parentModel) async {
-    return await apiHelper.post(
-        url: baseUrl + registerEndPoint, data: parentModel.toJson());
+    return await apiHelper.postFormData(
+        url: baseUrl + registerEndPoint,
+        data: parentModel.toJson(),
+        headers: headers);
+  }
+  
+  @override
+  Future<Either> login(SignInReq signInReq) {
+    // TODO: implement login
+    throw UnimplementedError();
   }
 }

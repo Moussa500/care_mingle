@@ -1,5 +1,9 @@
+import 'package:care_mingle/arguments.dart';
 import 'package:care_mingle/core/config/assets/app_vectors.dart';
+import 'package:care_mingle/features/auth/data/models/user_model.dart';
+import 'package:care_mingle/features/auth/domain/repository/auth_repository.dart';
 import 'package:care_mingle/features/auth/presentation/widgets/custom_textfield.dart';
+import 'package:care_mingle/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:care_mingle/common/widgets/custom_appBar.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
@@ -11,8 +15,9 @@ class BabySitterAdditional extends StatefulWidget {
   @override
   _BabySitterAdditionalState createState() => _BabySitterAdditionalState();
 }
+
 class _BabySitterAdditionalState extends State<BabySitterAdditional> {
-  List<Map<String, dynamic>> childrenData = [];
+  List<int> availability = [];
   List<String> days = [
     "Monday",
     "Thuesday",
@@ -24,7 +29,8 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
   ];
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as RegisterArguments;
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppbar(),
@@ -72,7 +78,10 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                              onTap: () {}, child: day(days[index]));
+                              onTap: () {
+                                availability.add(index);
+                              },
+                              child: day(days[index]));
                         },
                         separatorBuilder: (context, index) =>
                             SizedBox(width: 7.w),
@@ -89,7 +98,26 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final result = await sl<AuthRepository>()
+                        .registerBabySitter(BabySitterModel(
+                            name: args.name,
+                            email: args.email,
+                            phone: args.phone,
+                            address: args.address,
+                            password: args.password,
+                            status: "unbanned",
+                            profilePic: "",
+                            role: "babySitter",
+                            price: 400,
+                            availability: availability,
+                            cv: ""));
+                    result.fold((left) {
+                      print(left);
+                    }, (right) {
+                      print(right);
+                    });
+                  },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(261.w, 54.h),
                     shape: RoundedRectangleBorder(
@@ -113,6 +141,7 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
       ),
     );
   }
+
   Padding header(String label) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -128,6 +157,7 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
       ),
     );
   }
+
   Container day(String day) => Container(
         height: 31.h,
         width: 77.w,

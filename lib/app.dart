@@ -3,7 +3,7 @@ import 'package:care_mingle/features/auth/presentation/register/pages/baby_sitte
 import 'package:care_mingle/features/auth/presentation/register/pages/login_page.dart';
 import 'package:care_mingle/features/auth/presentation/register/pages/parent_additional.dart';
 import 'package:care_mingle/features/auth/presentation/register/pages/register_page.dart';
-import 'package:care_mingle/intro/get_started.dart';
+import 'package:care_mingle/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         theme: AppTheme.theme,
       initialRoute: '/',
       routes: {
-        '/':(context)=>const IntroPage(),
+        '/':(context)=>HomePage(),
         '/login':(context)=>const LoginPage(),
         '/register':(context)=>const RegisterPage(),
         '/parentAdditional':(context)=>const ParentAdditional(),
