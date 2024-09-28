@@ -17,6 +17,12 @@ class AppTheme {
           hintStyle:
               TextStyle(color: Color(0xff383838), fontWeight: FontWeight.w500),
           filled: false,
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 1,
+              )),
           focusColor: AppColors.primaryColor,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),

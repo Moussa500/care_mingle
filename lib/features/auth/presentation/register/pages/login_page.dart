@@ -1,4 +1,4 @@
-import 'package:care_mingle/common/widgets/custom_appBar.dart';
+import 'package:care_mingle/core/common/widgets/custom_appBar.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
 import 'package:care_mingle/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';

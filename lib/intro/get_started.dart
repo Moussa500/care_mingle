@@ -1,6 +1,6 @@
 import 'package:care_mingle/core/config/assets/app_images.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
-import 'package:care_mingle/features/auth/presentation/register/pages/register_page.dart';
+import 'package:care_mingle/features/auth/presentation/register/pages/register_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,11 +55,19 @@ class IntroPage extends StatelessWidget {
                     height: 25.h,
                   ),
                   ElevatedButton(
-                      onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>const RegisterPage())),style: ElevatedButton.styleFrom(minimumSize: Size(271.w, 54.h),shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r))),
-                      child: Text(
-                        "Let's Get Started",
-                        style: TextStyle(fontSize: 18.sp, color: Colors.white),
-                      ),),
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterPage())),
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(271.w, 54.h),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.r))),
+                    child: Text(
+                      "Let's Get Started",
+                      style: TextStyle(fontSize: 18.sp, color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
             ),

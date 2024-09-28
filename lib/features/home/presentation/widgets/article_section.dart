@@ -7,7 +7,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ArticleSection extends StatelessWidget {
   ArticleSection({super.key});
   final PageController _pageController = PageController();
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -92,8 +91,16 @@ class ArticleSection extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(height: 20.h,),
-        SmoothPageIndicator(controller: _pageController, count: 3,effect: const ExpandingDotsEffect(activeDotColor: AppColors.primaryColor,dotColor: Color(0xffD8B8D1)),)
+        SizedBox(
+          height: 20.h,
+        ),
+        SmoothPageIndicator(
+          controller: _pageController,
+          count: 3,
+          effect: const ExpandingDotsEffect(
+              activeDotColor: AppColors.primaryColor,
+              dotColor: Color(0xffD8B8D1)),
+        )
       ],
     );
   }

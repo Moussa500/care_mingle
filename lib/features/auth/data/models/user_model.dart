@@ -1,38 +1,36 @@
+import 'package:care_mingle/core/base/base_model.dart';
 import 'package:care_mingle/features/auth/domain/entities/user_entity.dart';
 
-abstract class UserModel extends UserEntity {
-  UserModel(
-      {required super.name,
-      required super.email,
-      required super.phone,
-      required super.address,
-      required super.password,
-      required super.status,
-      required super.profilePic,
-      required super.role});
-}
-
-class BabySitterModel extends UserModel {
+class BabySitterModel extends BaseModel<BabySitterModel> {
   final List<int>? availability;
   final double? rating;
   final double? price;
   final String? bio;
   final String? cv;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? address;
+  final String? password;
+  final String? status;
+  final String? profilePic;
+  final String? role;
   BabySitterModel(
       {this.availability,
       this.rating,
       this.price,
       this.bio,
       this.cv,
-      required super.name,
-      required super.email,
-      required super.phone,
-      required super.address,
-      required super.password,
-      required super.status,
-      required super.profilePic,
-      required super.role});
-  factory BabySitterModel.fromJson(Map<String, dynamic> json) {
+      this.name,
+      this.email,
+      this.phone,
+      this.address,
+      this.password,
+      this.status,
+      this.profilePic,
+      this.role});
+  @override
+  fromJson(Map<String, dynamic> json) {
     return BabySitterModel(
         name: json["name"],
         email: json["email"],
@@ -48,11 +46,13 @@ class BabySitterModel extends UserModel {
         status: json["status"],
         rating: json["rating"]);
   }
+
+  @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,
       'email': email,
-      'password':password,
+      'password': password,
       'phone': phone,
       'address': address,
       "role": role,
@@ -65,21 +65,45 @@ class BabySitterModel extends UserModel {
       "rating": rating
     };
   }
+
+  @override
+  List<Object?> get props => [
+        name,
+        email,
+        address,
+        role,
+        profilePic,
+        availability,
+        price,
+        bio,
+        cv,
+        status,
+        rating,
+      ];
 }
 
-class ParentModel extends UserModel {
+class ParentModel extends BaseModel<ParentModel> {
   List<Map<String, dynamic>>? children;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? address;
+  final String? password;
+  final String? status;
+  final String? profilePic;
+  final String? role;
   ParentModel(
       {this.children,
-      required super.name,
-      required super.email,
-      required super.phone,
-      required super.address,
-      required super.password,
-      required super.status,
-      required super.profilePic,
-      required super.role});
-  factory ParentModel.fromJson(Map<String, dynamic> json) {
+      this.name,
+      this.email,
+      this.phone,
+      this.address,
+      this.password,
+      this.status,
+      this.profilePic,
+      this.role});
+      @override
+  fromJson(Map<String, dynamic> json) {
     return ParentModel(
       name: json["name"],
       email: json["email"],
@@ -92,10 +116,11 @@ class ParentModel extends UserModel {
       status: json["status"],
     );
   }
+  @override
   Map<String, dynamic> toJson() {
     return {
       'name': name,
-      'password':password,
+      'password': password,
       'email': email,
       'phone': phone,
       'address': address,
@@ -105,6 +130,9 @@ class ParentModel extends UserModel {
       "status": status,
     };
   }
+  
+  @override
+  List<Object?> get props =>[name,password,email,phone,address,role,profilePic,children,status];
 }
 
 extension BabySitterModelX on BabySitterModel {

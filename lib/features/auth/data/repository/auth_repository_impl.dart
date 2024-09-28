@@ -1,5 +1,6 @@
 import 'package:care_mingle/features/auth/data/data%20sources/auth_service.dart';
-import 'package:care_mingle/features/auth/data/models/sign_in_req.dart';
+import 'package:care_mingle/features/auth/data/models/request/sign_in_req.dart';
+import 'package:care_mingle/features/auth/data/models/response/sign_in_response.dart';
 import 'package:care_mingle/features/auth/data/models/user_model.dart';
 import 'package:care_mingle/features/auth/domain/repository/auth_repository.dart';
 import 'package:care_mingle/service_locator.dart';
@@ -12,7 +13,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either> registerBabySitter(BabySitterModel babySitterModel) async {
+  Future<Either<LoginResponse,dynamic>> registerBabySitter(BabySitterModel babySitterModel) async {
     return sl<AuthService>().registerBabySitter(babySitterModel);
   }
 

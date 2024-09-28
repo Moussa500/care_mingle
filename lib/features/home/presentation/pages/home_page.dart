@@ -1,4 +1,4 @@
-import 'package:care_mingle/common/widgets/custom_appBar.dart';
+import 'package:care_mingle/core/common/widgets/custom_appBar.dart';
 import 'package:care_mingle/core/config/assets/app_images.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
 import 'package:care_mingle/features/home/presentation/widgets/article_section.dart';

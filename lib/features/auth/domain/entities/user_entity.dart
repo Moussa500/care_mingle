@@ -1,22 +1,22 @@
 abstract class UserEntity {
-  final String name;
-  final String email;
-  final String phone;
-  final String address;
-  final String password;
-  final String status;
-  final String profilePic;
-  final String role;
+  final String? name;
+  final String? email;
+  final String? phone;
+  final String? address;
+  final String? password;
+  final String? status;
+  final String? profilePic;
+  final String? role;
 
   UserEntity({
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.address,
-    required this.password,
-    required this.status,
-    required this.profilePic,
-    required this.role,
+   this.name,
+   this.email,
+   this.phone,
+   this.address,
+   this.password,
+   this.status,
+   this.profilePic,
+   this.role,
   });
 }
 
@@ -28,14 +28,14 @@ class BabySitterEntity extends UserEntity {
   final String? cv;
 
   BabySitterEntity({
-    required super.name,
-    required super.email,
-    required super.phone,
-    required super.address,
-    required super.password,
-    required super.status,
-    required super.profilePic,
-    required super.role,
+     super.name,
+   super.email,
+   super.phone,
+   super.address,
+   super.password,
+   super.status,
+   super.profilePic,
+   super.role,
     this.availability,
     this.rating,
     this.price,
@@ -45,16 +45,16 @@ class BabySitterEntity extends UserEntity {
 }
 
 class ParentEntity extends UserEntity {
-  final List<Map<String, dynamic>>? children;
+  final List<Map<String?, dynamic>>? children;
   ParentEntity({
-    required super.name,
-    required super.email,
-    required super.phone,
-    required super.address,
-    required super.password,
-    required super.status,
-    required super.profilePic,
-    required super.role,
+   super.name,
+   super.email,
+   super.phone,
+   super.address,
+   super.password,
+   super.status,
+   super.profilePic,
+   super.role,
     this.children,
   });
 }

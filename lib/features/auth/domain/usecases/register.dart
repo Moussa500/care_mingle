@@ -6,14 +6,13 @@ import 'package:dartz/dartz.dart';
 
 class RegisterParentUseCase implements UseCase<Either, ParentModel> {
   @override
-  Future<Either> call({ParentModel? params}) async {
-    return await sl<AuthRepository>().registerParent(params!);
+  Future<Either> call(ParentModel params) async {
+    return await sl<AuthRepository>().registerParent(params);
   }
 }
-
 class RegisterBabySitterUseCase implements UseCase<Either, BabySitterModel> {
   @override
-  Future<Either> call({BabySitterModel? params}) async {
-    return await sl<AuthRepository>().registerBabySitter(params!);
+  Future<Either> call(BabySitterModel params) async {
+    return await sl<AuthRepository>().registerBabySitter(params);
   }
 }

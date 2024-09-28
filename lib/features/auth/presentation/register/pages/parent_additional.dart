@@ -5,14 +5,13 @@ import 'package:care_mingle/features/auth/domain/entities/user_entity.dart';
 import 'package:care_mingle/features/auth/domain/usecases/register.dart';
 import 'package:care_mingle/service_locator.dart';
 import 'package:flutter/material.dart';
-import 'package:care_mingle/common/widgets/custom_appBar.dart';
+import 'package:care_mingle/core/common/widgets/custom_appBar.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
 import 'package:care_mingle/features/auth/presentation/widgets/custom_drop_down_menu.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ParentAdditional extends StatefulWidget {
   const ParentAdditional({super.key});
-
   @override
   _ParentAdditionalState createState() => _ParentAdditionalState();
 }
@@ -24,7 +23,7 @@ class _ParentAdditionalState extends State<ParentAdditional> {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as RegisterArguments;
-        print(args.password);
+    print(args.password);
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppbar(),
@@ -137,29 +136,7 @@ class _ParentAdditionalState extends State<ParentAdditional> {
               ),
               SizedBox(height: 50.h),
               ElevatedButton(
-                onPressed: () async {
-                  print(args.password);
-                  try {
-                    var result = await sl<RegisterParentUseCase>().call(
-                        params: ParentModel(
-                            name: args.name,
-                            email: args.email,
-                            phone: args.phone,
-                            address: args.address,
-                            password: args.password,
-                            status: "unbanned",
-                            profilePic: AppImages.intro,
-                            role: "parent",
-                            children: childrenData));
-                    result.fold((left) {
-                      print({left});
-                    }, (right) {
-                      print({right});
-                    });
-                  } catch (e) {
-                    print("error:$e");
-                  }
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(261.w, 54.h),
                   shape: RoundedRectangleBorder(

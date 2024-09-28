@@ -5,7 +5,7 @@ import 'package:care_mingle/features/auth/domain/repository/auth_repository.dart
 import 'package:care_mingle/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:care_mingle/service_locator.dart';
 import 'package:flutter/material.dart';
-import 'package:care_mingle/common/widgets/custom_appBar.dart';
+import 'package:care_mingle/core/common/widgets/custom_appBar.dart';
 import 'package:care_mingle/core/config/theme/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +15,6 @@ class BabySitterAdditional extends StatefulWidget {
   @override
   _BabySitterAdditionalState createState() => _BabySitterAdditionalState();
 }
-
 class _BabySitterAdditionalState extends State<BabySitterAdditional> {
   List<int> availability = [];
   List<String> days = [
@@ -29,8 +28,6 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
   ];
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as RegisterArguments;
     return SafeArea(
       child: Scaffold(
         appBar: const CustomAppbar(),
@@ -99,24 +96,6 @@ class _BabySitterAdditionalState extends State<BabySitterAdditional> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    final result = await sl<AuthRepository>()
-                        .registerBabySitter(BabySitterModel(
-                            name: args.name,
-                            email: args.email,
-                            phone: args.phone,
-                            address: args.address,
-                            password: args.password,
-                            status: "unbanned",
-                            profilePic: "",
-                            role: "babySitter",
-                            price: 400,
-                            availability: availability,
-                            cv: ""));
-                    result.fold((left) {
-                      print(left);
-                    }, (right) {
-                      print(right);
-                    });
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(261.w, 54.h),
